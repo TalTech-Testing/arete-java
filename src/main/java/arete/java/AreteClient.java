@@ -1,5 +1,6 @@
 package arete.java;
 
+import arete.java.dev.SubmissionInitializer;
 import arete.java.request.AreteRequestAsync;
 import arete.java.request.AreteRequestSync;
 import arete.java.request.AreteTestUpdate;
@@ -16,44 +17,64 @@ import java.net.http.HttpResponse;
 public class AreteClient {
 
     ObjectMapper objectMapper = new ObjectMapper();
-
+    String url;
 
     /**
-     * String url: testers ip with port or url
-     * AreteRequestSync request: request body
+     * String url: testers ip with port or url. localhost:8098 if in tester machine.
+     **/
+    AreteClient(String testerUrl) {
+        this.url = testerUrl;
+    }
+
+    /**
+     * @param request: request body
      * <p>
-     * Sync will return a response with the actual test results
+     * @return a response with the actual test results
      **/
-    public AreteResponse requestSync(String url, AreteRequestSync request) throws IOException, InterruptedException {
-        HttpResponse<String> response = post(url, objectMapper.writeValueAsString(request));
-        return objectMapper.readValue(response.body(), AreteResponse.class);
+    public AreteResponse requestSync(AreteRequestSync request) {
+        try {
+            HttpResponse<String> response = post(url + "/test/sync", objectMapper.writeValueAsString(request));
+            return objectMapper.readValue(response.body(), AreteResponse.class);
+        } catch (Exception e) {
+            throw new AreteException(e);
+        }
     }
 
     /**
-     * String url: testers ip with port or url
-     * AreteRequestAsync request: request body
+     * @param request: request body
      * <p>
-     * Async will return the received request and send the test results to returnUrl
+     * @return the received request and send the test results to returnUrl
      **/
-    public AreteRequestAsync requestAsync(String url, AreteRequestAsync request) throws IOException, InterruptedException {
-        HttpResponse<String> response = post(url, objectMapper.writeValueAsString(request));
-        return objectMapper.readValue(response.body(), AreteRequestAsync.class);
+    public AreteRequestAsync requestAsync(AreteRequestAsync request) {
+        try {
+            HttpResponse<String> response = post(url + "/test", objectMapper.writeValueAsString(request));
+            return objectMapper.readValue(response.body(), AreteRequestAsync.class);
+        } catch (Exception e) {
+            throw new AreteException(e);
+        }
     }
 
     /**
-     * String url: testers ip with port or url
-     * AreteTestUpdate request: request body to make tester update tests folder to run tests from.
+     * @param request: request body to make tester update tests folder to run tests from.
      **/
-    public void updateTests(String url, AreteTestUpdate request) throws IOException, InterruptedException {
-        HttpResponse<String> response = post(url, objectMapper.writeValueAsString(request));
+    public void updateTests(AreteTestUpdate request) {
+        try {
+            HttpResponse<String> response = post(url + "/tests/update", objectMapper.writeValueAsString(request));
+        } catch (Exception e) {
+            throw new AreteException(e);
+        }
     }
 
     /**
-     * String url: testers ip with port or url, for example localhost:8098/image/update/java-tester
+     * @param image: image to update - java-tester, python-tester, prolog-tester currently supported
      * AreteTestUpdate request: request body to update tester image. For example python-tester was updated in docker.io
      **/
-    public void updateImage(String url) throws IOException, InterruptedException {
-        HttpResponse<String> response = post(url, "");
+    public void updateImage(String image) {
+        try {
+            HttpResponse<String> response = post(url + "/image/update/" + image, "");
+        } catch (Exception e) {
+            throw new AreteException(e);
+        }
     }
 
     private HttpResponse<String> post(String postUrl, String data) throws IOException, InterruptedException {
@@ -69,4 +90,10 @@ public class AreteClient {
 
     }
 
+}
+
+class AreteException extends RuntimeException {
+    public AreteException(Exception e) {
+        super(e);
+    }
 }

@@ -6,6 +6,7 @@
  * User Manual available at https://docs.gradle.org/6.0.1/userguide/java_library_plugin.html
  */
 
+
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
@@ -39,4 +40,19 @@ dependencies {
     // https://mvnrepository.com/artifact/com.sun.istack/istack-commons-runtime
     compile group: 'com.sun.istack', name: 'istack-commons-runtime', version: '2.2'
 
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+
+
+}
+
+jar {
+    manifest {
+        attributes('Implementation-Title': project.name,
+                'Implementation-Version': project.version)
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
