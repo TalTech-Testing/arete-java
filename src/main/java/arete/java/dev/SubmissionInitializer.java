@@ -1,18 +1,13 @@
 package arete.java.dev;
 
-import arete.java.request.AreteRequestAsync;
-import arete.java.request.AreteRequestSync;
+import arete.java.request.AreteRequest;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.stream.Collectors;
 
 
 /**
@@ -41,9 +36,9 @@ public class SubmissionInitializer {
     private final static HashSet<String> EXTRA = new HashSet<>(Collections.singletonList("stylecheck"));
     private final static String home = "src/main/java/arete/java/dev/";
 
-    public AreteRequestAsync getFullSubmissionStringControllerEndpoint() {
+    public AreteRequest getFullSubmissionStringControllerEndpoint() {
 
-        return AreteRequestAsync.builder()
+        return AreteRequest.builder()
                 .gitStudentRepo(STUDENT_REPO)
                 .hash("2448474b6a76ef534660817948dc8b816e40dd48")
                 .testingPlatform(TESTING_PLATFORM)
@@ -55,9 +50,9 @@ public class SubmissionInitializer {
                 .build();
     }
 
-    public AreteRequestAsync getFullSubmissionStringControllerEndpointPython() {
+    public AreteRequest getFullSubmissionStringControllerEndpointPython() {
 
-        return AreteRequestAsync.builder()
+        return AreteRequest.builder()
                 .gitStudentRepo(STUDENT_REPO_PYTHON)
                 .hash("1bf2d711ce9ff944c7c9ffd9def23d312e9c4f9f")
                 .testingPlatform(TESTING_PLATFORM_PYTHON)
@@ -69,9 +64,9 @@ public class SubmissionInitializer {
                 .build();
     }
 
-    public AreteRequestAsync getFullSubmissionStringControllerEndpointPythonLong() {
+    public AreteRequest getFullSubmissionStringControllerEndpointPythonLong() {
 
-        return AreteRequestAsync.builder()
+        return AreteRequest.builder()
                 .gitStudentRepo(STUDENT_REPO_PYTHON)
                 .hash("a932ed61340fbaa08e308f591d5b5791044abc0c")
                 .testingPlatform(TESTING_PLATFORM_PYTHON)
@@ -84,9 +79,9 @@ public class SubmissionInitializer {
                 .build();
     }
 
-    public AreteRequestAsync getFullSubmissionStringControllerEndpointPythonRecursion() {
+    public AreteRequest getFullSubmissionStringControllerEndpointPythonRecursion() {
 
-        return AreteRequestAsync.builder()
+        return AreteRequest.builder()
                 .gitStudentRepo("https://gitlab.cs.ttu.ee/envomp/iti0102-2019.git")
                 .testingPlatform(TESTING_PLATFORM_PYTHON)
                 .systemExtra((new HashSet<>(Arrays.asList(
@@ -98,9 +93,9 @@ public class SubmissionInitializer {
                 .build();
     }
 
-    public AreteRequestAsync getFullSubmissionStringControllerEndpointPythonCustomConfiguration() {
+    public AreteRequest getFullSubmissionStringControllerEndpointPythonCustomConfiguration() {
 
-        return AreteRequestAsync.builder()
+        return AreteRequest.builder()
                 .gitStudentRepo("https://gitlab.cs.ttu.ee/envomp/iti0102-2019.git")
                 .testingPlatform(TESTING_PLATFORM_PYTHON)
                 .returnUrl(RETURN_URL)
@@ -108,9 +103,9 @@ public class SubmissionInitializer {
                 .build();
     }
 
-    public AreteRequestAsync getFullSubmissionStringExamControllerEndpoint() {
+    public AreteRequest getFullSubmissionStringExamControllerEndpoint() {
 
-        return AreteRequestAsync.builder()
+        return AreteRequest.builder()
                 .gitStudentRepo(STUDENT_REPO_EXAM)
                 .testingPlatform(TESTING_PLATFORM_PYTHON)
                 .systemExtra((new HashSet<>(Arrays.asList("noStd", "noFeedback", "noMail"))))
@@ -120,9 +115,9 @@ public class SubmissionInitializer {
                 .build();
     }
 
-    public AreteRequestAsync getFullSubmissionStringProlog() {
+    public AreteRequest getFullSubmissionStringProlog() {
 
-        return AreteRequestAsync.builder()
+        return AreteRequest.builder()
                 .gitStudentRepo("https://gitlab.cs.ttu.ee/envomp/iti0211-2019.git")
                 .testingPlatform(TESTING_PLATFORM_PROLOG)
                 .uniid("envomp")
@@ -130,10 +125,10 @@ public class SubmissionInitializer {
                 .build();
     }
 
-    public AreteRequestSync getFullSubmissionStringSync(String base) throws IOException {
+    public AreteRequest getFullSubmissionStringSync(String base) throws IOException {
         String hash = getRandomHash();
 
-        return AreteRequestSync.builder()
+        return AreteRequest.builder()
                 .testingPlatform(TESTING_PLATFORM)
                 .hash(hash)
                 .returnUrl(String.format("%s/waitingroom/%s", base, hash))
@@ -142,7 +137,7 @@ public class SubmissionInitializer {
 ////						, "noMail"
                 ))))
                 .source(new ArrayList<>(Collections.singletonList(
-                        AreteRequestSync.SourceFile.builder()
+                        AreteRequest.SourceFile.builder()
                                 .path("EX01IdCode/src/ee/taltech/iti0202/idcode/IDCode.java")
                                 .contents(JAVA_CODE)
                                 .build())))
@@ -150,11 +145,11 @@ public class SubmissionInitializer {
     }
 
 
-    public AreteRequestSync getFullSubmissionStringPythonSync(String base) throws IOException {
+    public AreteRequest getFullSubmissionStringPythonSync(String base) throws IOException {
 
         String hash = getRandomHash();
 
-        return AreteRequestSync.builder()
+        return AreteRequest.builder()
                 .testingPlatform(TESTING_PLATFORM_PYTHON)
                 .dockerExtra(EXTRA)
                 .hash(hash)
@@ -164,18 +159,18 @@ public class SubmissionInitializer {
                 .returnUrl(String.format("%s/waitingroom/%s", base, hash))
                 .gitTestSource(PROJECT_GIT_PYTHON)
                 .source(new ArrayList<>(Collections.singletonList(
-                        AreteRequestSync.SourceFile.builder()
+                        AreteRequest.SourceFile.builder()
                                 .path("ex04_cipher/cipher.py")
                                 .contents(PYTHON_CODE)
                                 .build())))
                 .build();
     }
 
-    public AreteRequestSync getFullSubmissionStringPythonSyncNoStyle(String base) throws IOException {
+    public AreteRequest getFullSubmissionStringPythonSyncNoStyle(String base) throws IOException {
 
         String hash = getRandomHash();
 
-        return AreteRequestSync.builder()
+        return AreteRequest.builder()
                 .testingPlatform(TESTING_PLATFORM_PYTHON)
                 .dockerExtra(new HashSet<>())
                 .hash(hash)
@@ -185,7 +180,7 @@ public class SubmissionInitializer {
                 .returnUrl(String.format("%s/waitingroom/%s", base, hash))
                 .gitTestSource(PROJECT_GIT_PYTHON)
                 .source(new ArrayList<>(Collections.singletonList(
-                        AreteRequestSync.SourceFile.builder()
+                        AreteRequest.SourceFile.builder()
                                 .path("ex04_cipher/cipher.py")
                                 .contents(PYTHON_CODE)
                                 .build())))
@@ -193,11 +188,11 @@ public class SubmissionInitializer {
     }
 
 
-    public AreteRequestSync getFullSubmissionStringPythonSyncNoStdout(String base) throws IOException {
+    public AreteRequest getFullSubmissionStringPythonSyncNoStdout(String base) throws IOException {
 
         String hash = getRandomHash();
 
-        return AreteRequestSync.builder()
+        return AreteRequest.builder()
                 .testingPlatform(TESTING_PLATFORM_PYTHON)
                 .dockerExtra(EXTRA)
                 .systemExtra(new HashSet<>(Arrays.asList("noStd"
@@ -207,18 +202,18 @@ public class SubmissionInitializer {
                 .returnUrl(String.format("%s/waitingroom/%s", base, hash))
                 .gitTestSource(PROJECT_GIT_PYTHON)
                 .source(new ArrayList<>(Collections.singletonList(
-                        AreteRequestSync.SourceFile.builder()
+                        AreteRequest.SourceFile.builder()
                                 .path("ex04_cipher/cipher.py")
                                 .contents(PYTHON_CODE)
                                 .build())))
                 .build();
     }
 
-    public AreteRequestSync getFullSubmissionStringPythonSyncNoTesterFiles(String base) throws IOException {
+    public AreteRequest getFullSubmissionStringPythonSyncNoTesterFiles(String base) throws IOException {
 
         String hash = getRandomHash();
 
-        return AreteRequestSync.builder()
+        return AreteRequest.builder()
                 .testingPlatform(TESTING_PLATFORM_PYTHON)
                 .dockerExtra(EXTRA)
                 .systemExtra(new HashSet<>(Arrays.asList("noTesterFiles"
@@ -228,7 +223,7 @@ public class SubmissionInitializer {
                 .returnUrl(String.format("%s/waitingroom/%s", base, hash))
                 .gitTestSource(PROJECT_GIT_PYTHON)
                 .source(new ArrayList<>(Collections.singletonList(
-                        AreteRequestSync.SourceFile.builder()
+                        AreteRequest.SourceFile.builder()
                                 .path("ex04_cipher/cipher.py")
                                 .contents(PYTHON_CODE)
                                 .build())))

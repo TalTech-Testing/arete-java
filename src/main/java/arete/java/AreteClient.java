@@ -1,8 +1,6 @@
 package arete.java;
 
-import arete.java.dev.SubmissionInitializer;
-import arete.java.request.AreteRequestAsync;
-import arete.java.request.AreteRequestSync;
+import arete.java.request.AreteRequest;
 import arete.java.request.AreteTestUpdate;
 import arete.java.response.AreteResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -31,7 +29,7 @@ public class AreteClient {
      * <p>
      * @return a response with the actual test results
      **/
-    public AreteResponse requestSync(AreteRequestSync request) {
+    public AreteResponse requestSync(AreteRequest request) {
         try {
             HttpResponse<String> response = post(url + "/test/sync", objectMapper.writeValueAsString(request));
             return objectMapper.readValue(response.body(), AreteResponse.class);
@@ -45,10 +43,10 @@ public class AreteClient {
      * <p>
      * @return the received request and send the test results to returnUrl
      **/
-    public AreteRequestAsync requestAsync(AreteRequestAsync request) {
+    public AreteRequest requestAsync(AreteRequest request) {
         try {
             HttpResponse<String> response = post(url + "/test", objectMapper.writeValueAsString(request));
-            return objectMapper.readValue(response.body(), AreteRequestAsync.class);
+            return objectMapper.readValue(response.body(), AreteRequest.class);
         } catch (Exception e) {
             throw new AreteException(e);
         }
