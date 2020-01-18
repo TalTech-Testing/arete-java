@@ -18,9 +18,9 @@ public class AreteClient {
     String url;
 
     /**
-     * String url: testers ip with port or url. localhost:8098 if in tester machine.
+     * @param testerUrl: testers ip with port or url. localhost:8098 if in tester machine.
      **/
-    AreteClient(String testerUrl) {
+    public AreteClient(String testerUrl) {
         this.url = testerUrl;
     }
 
@@ -31,7 +31,7 @@ public class AreteClient {
      **/
     public AreteResponse requestSync(AreteRequest request) {
         try {
-            HttpResponse<String> response = post(url + "/test/sync", objectMapper.writeValueAsString(request));
+            HttpResponse<String> response = post(url + "/:testSync", objectMapper.writeValueAsString(request));
             return objectMapper.readValue(response.body(), AreteResponse.class);
         } catch (Exception e) {
             throw new AreteException(e);
@@ -45,7 +45,7 @@ public class AreteClient {
      **/
     public AreteRequest requestAsync(AreteRequest request) {
         try {
-            HttpResponse<String> response = post(url + "/test", objectMapper.writeValueAsString(request));
+            HttpResponse<String> response = post(url + "/:testAsync", objectMapper.writeValueAsString(request));
             return objectMapper.readValue(response.body(), AreteRequest.class);
         } catch (Exception e) {
             throw new AreteException(e);
@@ -57,7 +57,7 @@ public class AreteClient {
      **/
     public void updateTests(AreteTestUpdate request) {
         try {
-            HttpResponse<String> response = post(url + "/tests/update", objectMapper.writeValueAsString(request));
+            HttpResponse<String> response = put(url + "/tests", objectMapper.writeValueAsString(request));
         } catch (Exception e) {
             throw new AreteException(e);
         }
@@ -69,7 +69,7 @@ public class AreteClient {
      **/
     public void updateImage(String image) {
         try {
-            HttpResponse<String> response = post(url + "/image/update/" + image, "");
+            HttpResponse<String> response = put(url + "/image/" + image, "");
         } catch (Exception e) {
             throw new AreteException(e);
         }
@@ -81,6 +81,19 @@ public class AreteClient {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(postUrl))
                 .POST(HttpRequest.BodyPublishers.ofString(data))
+                .setHeader(HttpHeaders.CONTENT_TYPE, "application/json")
+                .build();
+
+        return client.send(request, HttpResponse.BodyHandlers.ofString());
+
+    }
+
+    private HttpResponse<String> put(String postUrl, String data) throws IOException, InterruptedException {
+
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(postUrl))
+                .PUT(HttpRequest.BodyPublishers.ofString(data))
                 .setHeader(HttpHeaders.CONTENT_TYPE, "application/json")
                 .build();
 

@@ -9,7 +9,7 @@ public class AreteClientTest {
     @Test
     public void InitTest() throws IOException {
         SubmissionInitializer submissionInitializer = new SubmissionInitializer();
-        System.out.println(submissionInitializer.getFullSubmissionStringSync(""));
+        System.out.println(submissionInitializer.getFullSubmissionStringControllerEndpoint());
     }
 
 }
