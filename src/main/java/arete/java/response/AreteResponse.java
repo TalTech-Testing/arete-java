@@ -1,7 +1,10 @@
 package arete.java.response;
 
 import com.fasterxml.jackson.annotation.JsonClassDescription;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonClassDescription("Response sent to Moodle")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AreteResponse {
 
     String version = "arete_2.0";
@@ -52,8 +56,9 @@ public class AreteResponse {
     @JsonPropertyDescription("Slug ran for student. for example pr01_something")
     String slug;
 
-    @JsonPropertyDescription("Security Token")
-    String token;
+    @JsonPropertyDescription("values that are returned the same way they were given in")
+    @JsonProperty("returnExtra")
+    private JsonNode returnExtra;
 
     @JsonPropertyDescription("Commit hash from gitlab")
     String hash;
