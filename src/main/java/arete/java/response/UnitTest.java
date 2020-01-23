@@ -18,8 +18,14 @@ public class UnitTest {
 	@JsonPropertyDescription("Groups of unittests this unittest depends on. If any test fails in that group, this test is skipped")
 	List<String> groupsDependedUpon;
 
-	@JsonPropertyDescription("One of the following (success, partial_success, passed, skipped, not_run, failiure, failed, not_set, unknown")
-	String status;
+	@JsonPropertyDescription("Status of the unittest")
+	TestStatus status;
+
+	public enum TestStatus {
+		PASSED,
+		FAILED,
+		SKIPPED
+	}
 
 	@JsonPropertyDescription("Test weight")
 	Integer weight;
