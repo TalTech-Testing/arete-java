@@ -9,6 +9,7 @@ import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @ToString
@@ -57,6 +58,18 @@ public class AreteResponse {
     @JsonPropertyDescription("Number of passed tests")
     Integer totalPassedCount = 0;
 
+    @JsonPropertyDescription("Docker image used for testing")
+    String testingPlatform;
+
+    @JsonPropertyDescription("git namespace")
+    String root;
+
+    @JsonPropertyDescription("URL or ssh for test repository")
+    String gitTestRepo;
+
+    @JsonPropertyDescription("URL or ssh for student repository")
+    String gitStudentRepo;
+
     @Builder.Default
     @JsonPropertyDescription("Style percentage")
     Integer style = 100;
@@ -78,6 +91,18 @@ public class AreteResponse {
 
     @JsonPropertyDescription("Commit message for student repository")
     String commitMessage;
+
+    @JsonPropertyDescription("Priority of job")
+    Integer priority;
+
+    @JsonPropertyDescription("No defaults. You can add (stylecheck) or something. It is sent to smaller tester. Look the possibilities from the small tester repository for more details.")
+    private Set<String> dockerExtra;
+
+    @JsonPropertyDescription("No defaults. You can add (noMail, noFiles, noTesterFiles, noStudentFiles, noStd, noFeedback, minimalFeedback)")
+    private Set<String> systemExtra;
+
+    @JsonPropertyDescription("Default docker timeout is 120 seconds")
+    private Integer dockerTimeout;
 
     @Builder.Default
     @JsonPropertyDescription("Whether the testing was successful or not")
