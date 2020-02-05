@@ -65,8 +65,7 @@ public class AreteResponse {
     String slug;
 
     @JsonPropertyDescription("values that are returned the same way they were given in")
-    @JsonProperty("returnExtra")
-    private JsonNode returnExtra;
+    JsonNode returnExtra;
 
     @JsonPropertyDescription("Commit hash from gitlab")
     String hash;
@@ -79,5 +78,8 @@ public class AreteResponse {
 
     @JsonPropertyDescription("Commit message for student repository")
     String commitMessage;
+
+    @JsonPropertyDescription("Whether the testing was successful or not")
+    Boolean failed = false;
 
 }
