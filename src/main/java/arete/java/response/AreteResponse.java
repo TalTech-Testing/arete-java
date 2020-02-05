@@ -79,6 +79,7 @@ public class AreteResponse {
     @JsonPropertyDescription("Commit message for student repository")
     String commitMessage;
 
+    @Builder.Default
     @JsonPropertyDescription("Whether the testing was successful or not")
     Boolean failed = false;
 
