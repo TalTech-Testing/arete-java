@@ -10,6 +10,7 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+    id 'maven-publish'
 }
 
 repositories {
@@ -43,7 +44,6 @@ dependencies {
     // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
 
-
 }
 
 jar {
@@ -54,5 +54,17 @@ jar {
 
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'ee.taltech.arete'
+            artifactId 'arete-java'
+            version '1.0'
+
+            from components.java
+        }
     }
 }
