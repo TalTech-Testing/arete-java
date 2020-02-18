@@ -46,7 +46,7 @@ public class AreteClient {
     public String requestLogs() {
         try {
             HttpResponse<String> response = get(url + "/logs");
-            return objectMapper.readValue(response.body(), String.class);
+            return response.body();
         } catch (Exception e) {
             throw new AreteException(e);
         }
