@@ -1,5 +1,6 @@
 package arete.java.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.sun.istack.NotNull;
 import lombok.*;
@@ -10,6 +11,7 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AreteTestUpdate {
 
 	@NotNull
