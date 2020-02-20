@@ -3,6 +3,7 @@ package arete.java;
 import arete.java.request.AreteRequest;
 import arete.java.request.AreteTestUpdate;
 import arete.java.response.AreteResponse;
+import arete.java.response.SystemState;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.net.HttpHeaders;
 
@@ -11,7 +12,6 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.List;
 
 public class AreteClient {
 
@@ -26,7 +26,6 @@ public class AreteClient {
     }
 
 
-
     /**
      * @return Currently active submissions
      **/
@@ -34,6 +33,18 @@ public class AreteClient {
         try {
             HttpResponse<String> response = get(url + "/submissions/active");
             return objectMapper.readValue(response.body(), AreteRequest[].class);
+        } catch (Exception e) {
+            throw new AreteException(e);
+        }
+    }
+
+    /**
+     * @return state of tester
+     **/
+    public SystemState requestState() {
+        try {
+            HttpResponse<String> response = get(url + "/state");
+            return objectMapper.readValue(response.body(), SystemState.class);
         } catch (Exception e) {
             throw new AreteException(e);
         }
