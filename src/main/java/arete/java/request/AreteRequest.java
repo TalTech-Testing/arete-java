@@ -1,6 +1,7 @@
 package arete.java.request;
 
 import com.fasterxml.jackson.annotation.JsonClassDescription;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.sun.istack.NotNull;
@@ -15,6 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonClassDescription("Async request from Moodle")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AreteRequest {
 
 	@JsonPropertyDescription("Image used for testing. Currently available: [java, python]")
@@ -68,11 +70,11 @@ public class AreteRequest {
 	@JsonPropertyDescription("values that are returned the same way they were given in")
 	private JsonNode returnExtra;
 
-	@Getter
+	@Data
 	@Builder
-	@ToString
 	@NoArgsConstructor
 	@AllArgsConstructor
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	public static class SourceFile {
 
 		@NotNull

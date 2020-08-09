@@ -8,7 +8,6 @@ import lombok.*;
 
 @Data
 @Builder
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonClassDescription("Current state of the machine")

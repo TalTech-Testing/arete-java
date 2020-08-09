@@ -8,7 +8,6 @@ import lombok.*;
 
 @Getter
 @Builder
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonClassDescription("File class")

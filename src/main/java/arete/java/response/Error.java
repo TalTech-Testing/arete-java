@@ -7,7 +7,6 @@ import lombok.*;
 
 @Data
 @Builder
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonClassDescription("Occured style, compilation and other errors")

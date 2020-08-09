@@ -9,7 +9,6 @@ import java.util.List;
 
 @Data
 @Builder
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonClassDescription("Test results from test file")

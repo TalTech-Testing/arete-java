@@ -8,7 +8,6 @@ import lombok.*;
 
 @Data
 @Builder
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonClassDescription("Stderr or Stdout")
