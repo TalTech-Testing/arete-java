@@ -1,6 +1,7 @@
 package arete.java.response;
 
 import com.fasterxml.jackson.annotation.JsonClassDescription;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import lombok.*;
 
@@ -10,6 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonClassDescription("Occured style, compilation and other errors")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Error {
 
     @JsonPropertyDescription("Error message")

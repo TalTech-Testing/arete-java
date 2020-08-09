@@ -1,7 +1,7 @@
 package arete.java.response;
 
 import com.fasterxml.jackson.annotation.JsonClassDescription;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import lombok.*;
 
@@ -13,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonClassDescription("Unit test")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UnitTest {
 
 	@JsonPropertyDescription("Groups of unittests this unittest depends on. If any test fails in that group, this test is skipped")
@@ -59,5 +60,4 @@ public class UnitTest {
 
 	@JsonPropertyDescription("List of stderrs")
 	List<ConsoleOutput> stderr;
-
 }

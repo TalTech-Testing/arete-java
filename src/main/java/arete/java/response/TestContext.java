@@ -1,7 +1,7 @@
 package arete.java.response;
 
 import com.fasterxml.jackson.annotation.JsonClassDescription;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import lombok.*;
 
@@ -13,8 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonClassDescription("Test results from test file")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TestContext {
-
 
 	@JsonPropertyDescription("List of unittests tested")
 	List<UnitTest> unitTests;

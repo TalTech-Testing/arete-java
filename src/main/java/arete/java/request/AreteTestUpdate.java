@@ -14,6 +14,9 @@ import lombok.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AreteTestUpdate {
 
+	private String user_email;
+	private String user_username;
+
 	@NotNull
 	@JsonPropertyDescription("Git hook project")
 	private Project project;
