@@ -2,6 +2,7 @@ package arete.java.request;
 
 import com.fasterxml.jackson.annotation.JsonClassDescription;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.sun.istack.NotNull;
@@ -17,6 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 @JsonClassDescription("Async request from Moodle")
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AreteRequest {
 
 	@JsonPropertyDescription("Image used for testing. Currently available: [java, python]")
