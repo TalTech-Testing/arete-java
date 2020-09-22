@@ -11,40 +11,51 @@ import java.util.List;
 import java.util.Set;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonClassDescription("Response sent to Moodle")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AreteResponse {
 
+	@Builder.Default
 	final String type = "arete";
 
+	@Builder.Default
 	final String version = "arete_2.0";
 
+	@Builder.Default
 	@JsonPropertyDescription("List of style, compilation and other errors")
 	List<Error> errors = new ArrayList<>();
 
+	@Builder.Default
 	@JsonPropertyDescription("List of student files")
 	List<File> files = new ArrayList<>();
 
+	@Builder.Default
 	@JsonPropertyDescription("List of test files")
 	List<File> testFiles = new ArrayList<>();
 
+	@Builder.Default
 	@JsonPropertyDescription("List of test suites which each contains unit-tests. Each test file produces an test suite")
 	List<TestContext> testSuites = new ArrayList<>();
 
+	@Builder.Default
 	@JsonPropertyDescription("(Appended by arete) Console outputs from docker")
 	List<ConsoleOutput> consoleOutputs = new ArrayList<>();
 
 	@JsonPropertyDescription("(Overridden by arete) HTML result for student")
 	String output;
 
+	@Builder.Default
 	@JsonPropertyDescription("Number of tests")
 	Integer totalCount = 0;
 
+	@Builder.Default
 	@JsonPropertyDescription("Passed percentage")
 	String totalGrade = "0";
 
+	@Builder.Default
 	@JsonPropertyDescription("Number of passed tests")
 	Integer totalPassedCount = 0;
 
@@ -60,6 +71,7 @@ public class AreteResponse {
 	@JsonPropertyDescription("(Overridden by arete) URL or ssh for student repository")
 	String gitStudentRepo;
 
+	@Builder.Default
 	@JsonPropertyDescription("Style percentage. Either from 0 to 100")
 	Integer style = 100;
 
@@ -96,6 +108,7 @@ public class AreteResponse {
 	@JsonPropertyDescription("(Overridden by arete) Default docker timeout is 120 seconds. Maximum allowed code execution time.")
 	private Integer dockerTimeout;
 
+	@Builder.Default
 	@JsonPropertyDescription("(Overridden by arete if left empty) Whether the testing was successful or not. Will be true if tester crashed.")
 	Boolean failed = false;
 
