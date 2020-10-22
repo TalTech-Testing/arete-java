@@ -5,6 +5,7 @@ import com.sun.istack.NotNull;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -19,13 +20,16 @@ public class CommitDTO {
 	@ApiModelProperty(value = "AuthorDTO of the commit")
 	private AuthorDTO author;
 
+	@Builder.Default
 	@ApiModelProperty(value = "Added files")
-	private Set<String> added;
+	private Set<String> added = new HashSet<>();
 
+	@Builder.Default
 	@ApiModelProperty(value = "Modified files")
-	private Set<String> modified;
+	private Set<String> modified = new HashSet<>();
 
+	@Builder.Default
 	@ApiModelProperty(value = "Removed files")
-	private Set<String> removed;
+	private Set<String> removed = new HashSet<>();
 
 }

@@ -1,7 +1,6 @@
 package ee.taltech.arete.java.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.istack.NotNull;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
@@ -13,11 +12,11 @@ import lombok.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SourceFileDTO {
 
-	@NotNull
+	@NonNull
 	@ApiModelProperty(value = "EX01IdCode/src/ee/taltech/iti0202/idcode/IDCodeTest.java for example")
 	private String path;
 
-	@NotNull
+	@NonNull
 	@ApiModelProperty(value = "Contents of the file")
 	private String contents;
 

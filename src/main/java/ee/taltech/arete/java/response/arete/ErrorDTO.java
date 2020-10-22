@@ -14,28 +14,25 @@ import lombok.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ErrorDTO {
 
-	@Builder.Default
 	@ApiModelProperty(value = "ErrorDTO message")
-	String message = "";
+	private String message;
 
 	@Builder.Default
 	@ApiModelProperty(value = "ErrorDTO kind(styleError, compilationError, other)")
-	String kind = "";
+	private String kind = "other";
 
-	@Builder.Default
 	@ApiModelProperty(value = "FileDTO, where error occured")
-	String fileName = "";
+	private String fileName;
 
 	@Builder.Default
 	@ApiModelProperty(value = "Line, where error occured")
-	Integer lineNo = 0;
+	private Integer lineNo = 0;
 
 	@Builder.Default
 	@ApiModelProperty(value = "Column, where error occured")
-	Integer columnNo = 0;
+	private Integer columnNo = 0;
 
-	@Builder.Default
 	@ApiModelProperty(value = "Hint, to fix the error")
-	String hint = "";
+	private String hint;
 
 }

@@ -5,6 +5,7 @@ import com.sun.istack.NotNull;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -19,7 +20,7 @@ public class AreteTestUpdateDTO {
 	@ApiModelProperty(value = "Git hook project")
 	private ProjectDTO project;
 
-	@NotNull
+	@Builder.Default
 	@ApiModelProperty(value = "Git hook project")
-	private List<CommitDTO> commits;
+	private List<CommitDTO> commits = new ArrayList<>();
 }

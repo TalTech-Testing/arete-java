@@ -19,39 +19,30 @@ public class TestContextDTO {
 
 	@Builder.Default
 	@ApiModelProperty(value = "List of unittests tested")
-	List<UnitTestDTO> unitTests = new ArrayList<>();
+	private List<UnitTestDTO> unitTests = new ArrayList<>();
 
-	@Builder.Default
 	@ApiModelProperty(value = "Test name")
-	String name = "";
+	private String name;
 
-	@Builder.Default
 	@ApiModelProperty(value = "Test file path")
-	String file = "";
+	private String file;
 
-	@Builder.Default
 	@ApiModelProperty(value = "Test start time in milliseconds")
-	Long startDate = 0L;
+	private Long startDate;
 
-	@Builder.Default
 	@ApiModelProperty(value = "Test end time in milliseconds")
-	Long endDate = 0L;
-
-//	String mode;
-//	String welcomeMessage;
-//	Integer identifier;
-//	Integer count;
+	private Long endDate;
 
 	@Builder.Default
 	@ApiModelProperty(value = "Sum of test weights")
-	Integer weight = 0;
+	private Integer weight = 1;
 
 	@Builder.Default
 	@ApiModelProperty(value = "Number of passed tests")
-	Integer passedCount = 0;
+	private Integer passedCount = 0;
 
 	@Builder.Default
 	@ApiModelProperty(value = "Total grade for this test file")
-	Double grade = 0.0;
+	private Double grade = 0.0;
 
 }

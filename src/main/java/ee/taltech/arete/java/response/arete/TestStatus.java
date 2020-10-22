@@ -1,4 +1,4 @@
-package ee.taltech.arete.java;
+package ee.taltech.arete.java.response.arete;
 
 public enum TestStatus {
 	PASSED,

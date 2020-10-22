@@ -21,29 +21,23 @@ import java.lang.management.ManagementFactory;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SystemStateDTO {
 
-	@Builder.Default
 	@ApiModelProperty(value = "JVM CPU usage")
-	private Double processCpuLoad = -1.0;
+	private Double processCpuLoad;
 
-	@Builder.Default
 	@ApiModelProperty(value = "System CPU usage")
-	private Double systemCpuLoad = -1.0;
+	private Double systemCpuLoad;
 
-	@Builder.Default
 	@ApiModelProperty(value = "System RAM total")
-	private Long systemRAMTotal = -1L;
+	private Long systemRAMTotal;
 
-	@Builder.Default
 	@ApiModelProperty(value = "System RAM usage")
-	private Long systemRAMUsed = -1L;
+	private Long systemRAMUsed;
 
-	@Builder.Default
 	@ApiModelProperty(value = "System total Disk space")
-	private Long systemDiskSpaceTotal = -1L;
+	private Long systemDiskSpaceTotal;
 
-	@Builder.Default
 	@ApiModelProperty(value = "System used Disk space")
-	private Long systemDiskSpaceUsed = -1L;
+	private Long systemDiskSpaceUsed;
 
 
 	public SystemStateDTO() {

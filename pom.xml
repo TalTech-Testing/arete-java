@@ -6,7 +6,7 @@
 
     <groupId>ee.taltech.arete.java</groupId>
     <artifactId>client</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.7</version>
     <build>
         <plugins>
             <plugin>
@@ -25,7 +25,7 @@
     <distributionManagement>
         <repository>
             <id>github</id>
-            <name>GitHub OWNER Apache Maven Packages</name>
+            <name>GitHub envomp Apache Maven Packages</name>
             <url>https://maven.pkg.github.com/envomp/arete-java</url>
         </repository>
     </distributionManagement>

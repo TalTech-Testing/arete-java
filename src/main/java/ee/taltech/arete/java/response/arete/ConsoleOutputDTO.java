@@ -14,8 +14,7 @@ import lombok.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ConsoleOutputDTO {
 
-	@Builder.Default
 	@ApiModelProperty(value = "Std message")
-	String content = "";
+	private String content;
 
 }
