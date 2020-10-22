@@ -5,10 +5,14 @@ import lombok.*;
 @Data
 @Builder
 @ToString
+@Deprecated(forRemoval = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class HodorFile {
-	String path;
-	String contents;
-	Boolean isTest;
+
+	private String contents;
+
+	private Boolean isTest;
+
+	private String path;
 }

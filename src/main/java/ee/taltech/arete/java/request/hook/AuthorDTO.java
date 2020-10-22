@@ -13,11 +13,10 @@ import lombok.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AuthorDTO {
 
-	@NotNull
-	@ApiModelProperty(value = "Name of the author")
-	private String name;
-
 	@ApiModelProperty(value = "email of the author")
 	private String email;
 
+	@NotNull
+	@ApiModelProperty(value = "Name of the author")
+	private String name;
 }

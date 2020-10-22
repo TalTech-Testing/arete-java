@@ -7,15 +7,20 @@ import java.util.ArrayList;
 @Data
 @Builder
 @ToString
+@Deprecated(forRemoval = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class HodorStudentTesterResponse {
 
-	private String version;
-	private String type;
 	private String contentRoot;
-	private String testRoot;
-	private ArrayList<TestingResult> results;
+
 	private String extra;
 
+	private ArrayList<TestingResult> results;
+
+	private String testRoot;
+
+	private String type;
+
+	private String version;
 }

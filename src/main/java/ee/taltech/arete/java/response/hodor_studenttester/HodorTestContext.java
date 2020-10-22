@@ -7,20 +7,32 @@ import java.util.List;
 @Data
 @Builder
 @ToString
+@Deprecated(forRemoval = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class HodorTestContext {
 
-    List<HodorUnitTest> unitTests;
-    String name;
-    String file;
-    Long startDate;
-    Long endDate;
-    String mode;
-    String welcomeMessage;
-    Integer identifier;
-    Integer count;
-    Integer weight;
-    Integer passedCount;
-    Double grade;
+	private Integer count;
+
+	private Long endDate;
+
+	private String file;
+
+	private Double grade;
+
+	private Integer identifier;
+
+	private String mode;
+
+	private String name;
+
+	private Integer passedCount;
+
+	private Long startDate;
+
+	private List<HodorUnitTest> unitTests;
+
+	private Integer weight;
+
+	private String welcomeMessage;
 }

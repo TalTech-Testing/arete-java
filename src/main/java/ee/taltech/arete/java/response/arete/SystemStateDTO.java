@@ -27,17 +27,17 @@ public class SystemStateDTO {
 	@ApiModelProperty(value = "System CPU usage")
 	private Double systemCpuLoad;
 
-	@ApiModelProperty(value = "System RAM total")
-	private Long systemRAMTotal;
-
-	@ApiModelProperty(value = "System RAM usage")
-	private Long systemRAMUsed;
-
 	@ApiModelProperty(value = "System total Disk space")
 	private Long systemDiskSpaceTotal;
 
 	@ApiModelProperty(value = "System used Disk space")
 	private Long systemDiskSpaceUsed;
+
+	@ApiModelProperty(value = "System RAM total")
+	private Long systemRAMTotal;
+
+	@ApiModelProperty(value = "System RAM usage")
+	private Long systemRAMUsed;
 
 
 	public SystemStateDTO() {

@@ -13,11 +13,10 @@ import lombok.*;
 public class SourceFileDTO {
 
 	@NonNull
-	@ApiModelProperty(value = "EX01IdCode/src/ee/taltech/iti0202/idcode/IDCodeTest.java for example")
-	private String path;
-
-	@NonNull
 	@ApiModelProperty(value = "Contents of the file")
 	private String contents;
 
+	@NonNull
+	@ApiModelProperty(value = "EX01IdCode/src/ee/taltech/iti0202/idcode/IDCodeTest.java for example")
+	private String path;
 }

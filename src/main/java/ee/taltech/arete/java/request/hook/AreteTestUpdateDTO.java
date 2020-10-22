@@ -16,11 +16,11 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AreteTestUpdateDTO {
 
-	@NotNull
-	@ApiModelProperty(value = "Git hook project")
-	private ProjectDTO project;
-
 	@Builder.Default
 	@ApiModelProperty(value = "Git hook project")
 	private List<CommitDTO> commits = new ArrayList<>();
+
+	@NotNull
+	@ApiModelProperty(value = "Git hook project")
+	private ProjectDTO project;
 }

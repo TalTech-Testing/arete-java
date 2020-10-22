@@ -17,32 +17,31 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TestContextDTO {
 
-	@Builder.Default
-	@ApiModelProperty(value = "List of unittests tested")
-	private List<UnitTestDTO> unitTests = new ArrayList<>();
-
-	@ApiModelProperty(value = "Test name")
-	private String name;
-
-	@ApiModelProperty(value = "Test file path")
-	private String file;
-
-	@ApiModelProperty(value = "Test start time in milliseconds")
-	private Long startDate;
-
 	@ApiModelProperty(value = "Test end time in milliseconds")
 	private Long endDate;
 
-	@Builder.Default
-	@ApiModelProperty(value = "Sum of test weights")
-	private Integer weight = 1;
-
-	@Builder.Default
-	@ApiModelProperty(value = "Number of passed tests")
-	private Integer passedCount = 0;
+	@ApiModelProperty(value = "Test file path")
+	private String file;
 
 	@Builder.Default
 	@ApiModelProperty(value = "Total grade for this test file")
 	private Double grade = 0.0;
 
+	@ApiModelProperty(value = "Test name")
+	private String name;
+
+	@Builder.Default
+	@ApiModelProperty(value = "Number of passed tests")
+	private Integer passedCount = 0;
+
+	@ApiModelProperty(value = "Test start time in milliseconds")
+	private Long startDate;
+
+	@Builder.Default
+	@ApiModelProperty(value = "List of unittests tested")
+	private List<UnitTestDTO> unitTests = new ArrayList<>();
+
+	@Builder.Default
+	@ApiModelProperty(value = "Sum of test weights")
+	private Integer weight = 1;
 }

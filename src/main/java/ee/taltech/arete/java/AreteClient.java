@@ -1,11 +1,11 @@
 package ee.taltech.arete.java;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.net.HttpHeaders;
 import ee.taltech.arete.java.request.AreteRequestDTO;
 import ee.taltech.arete.java.request.hook.AreteTestUpdateDTO;
 import ee.taltech.arete.java.response.arete.AreteResponseDTO;
 import ee.taltech.arete.java.response.arete.SystemStateDTO;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.net.HttpHeaders;
 
 import java.io.IOException;
 import java.net.URI;
@@ -16,6 +16,7 @@ import java.net.http.HttpResponse;
 public class AreteClient {
 
 	ObjectMapper objectMapper = new ObjectMapper();
+
 	String url;
 
 	/**
@@ -38,6 +39,19 @@ public class AreteClient {
 		}
 	}
 
+	private HttpResponse<String> get(String postUrl) throws IOException, InterruptedException {
+
+		HttpClient client = HttpClient.newHttpClient();
+		HttpRequest request = HttpRequest.newBuilder()
+				.uri(URI.create(postUrl))
+				.GET()
+				.setHeader(HttpHeaders.CONTENT_TYPE, "application/json")
+				.build();
+
+		return client.send(request, HttpResponse.BodyHandlers.ofString());
+
+	}
+
 	/**
 	 * @return state of tester
 	 **/
@@ -49,7 +63,6 @@ public class AreteClient {
 			throw new AreteException(e);
 		}
 	}
-
 
 	/**
 	 * @return logs of tester
@@ -92,6 +105,19 @@ public class AreteClient {
 		}
 	}
 
+	private HttpResponse<String> post(String postUrl, String data) throws IOException, InterruptedException {
+
+		HttpClient client = HttpClient.newHttpClient();
+		HttpRequest request = HttpRequest.newBuilder()
+				.uri(URI.create(postUrl))
+				.POST(HttpRequest.BodyPublishers.ofString(data))
+				.setHeader(HttpHeaders.CONTENT_TYPE, "application/json")
+				.build();
+
+		return client.send(request, HttpResponse.BodyHandlers.ofString());
+
+	}
+
 	/**
 	 * @param request: request body
 	 *                 <p>
@@ -117,44 +143,6 @@ public class AreteClient {
 		}
 	}
 
-	/**
-	 * @param image: image to update - java-tester, python-tester, prolog-tester currently supported
-	 *               AreteTestUpdateDTO request: request body to update tester image. For example python-tester was updated in docker.io
-	 **/
-	public void updateImage(String image) {
-		try {
-			HttpResponse<String> response = put(url + "/image/" + image, "");
-		} catch (Exception e) {
-			throw new AreteException(e);
-		}
-	}
-
-	private HttpResponse<String> get(String postUrl) throws IOException, InterruptedException {
-
-		HttpClient client = HttpClient.newHttpClient();
-		HttpRequest request = HttpRequest.newBuilder()
-				.uri(URI.create(postUrl))
-				.GET()
-				.setHeader(HttpHeaders.CONTENT_TYPE, "application/json")
-				.build();
-
-		return client.send(request, HttpResponse.BodyHandlers.ofString());
-
-	}
-
-	private HttpResponse<String> post(String postUrl, String data) throws IOException, InterruptedException {
-
-		HttpClient client = HttpClient.newHttpClient();
-		HttpRequest request = HttpRequest.newBuilder()
-				.uri(URI.create(postUrl))
-				.POST(HttpRequest.BodyPublishers.ofString(data))
-				.setHeader(HttpHeaders.CONTENT_TYPE, "application/json")
-				.build();
-
-		return client.send(request, HttpResponse.BodyHandlers.ofString());
-
-	}
-
 	private HttpResponse<String> put(String postUrl, String data) throws IOException, InterruptedException {
 
 		HttpClient client = HttpClient.newHttpClient();
@@ -166,6 +154,18 @@ public class AreteClient {
 
 		return client.send(request, HttpResponse.BodyHandlers.ofString());
 
+	}
+
+	/**
+	 * @param image: image to update - java-tester, python-tester, prolog-tester currently supported
+	 *               AreteTestUpdateDTO request: request body to update tester image. For example python-tester was updated in docker.io
+	 **/
+	public void updateImage(String image) {
+		try {
+			HttpResponse<String> response = put(url + "/image/" + image, "");
+		} catch (Exception e) {
+			throw new AreteException(e);
+		}
 	}
 
 }

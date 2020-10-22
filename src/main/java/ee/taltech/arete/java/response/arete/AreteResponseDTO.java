@@ -22,19 +22,73 @@ import java.util.Set;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AreteResponseDTO {
 
-	@Builder.Default
-	private String type = "arete";
+	@ApiModelProperty(value = "Commit message by student when pushing to repository")
+	private String commitMessage;
 
 	@Builder.Default
-	private String version = "2.0";
+	@ApiModelProperty(value = "Console outputs from docker")
+	private List<ConsoleOutputDTO> consoleOutputs = new ArrayList<>();
+
+	@ApiModelProperty(value = "Extra parameters that were sent to tester")
+	private String dockerExtra;
+
+	@Builder.Default
+	@ApiModelProperty(value = "Default docker timeout is 120 seconds. Maximum allowed code execution time.")
+	private Integer dockerTimeout = 120;
+
+	@ApiModelProperty(value = " Students mail")
+	private String email;
 
 	@Builder.Default
 	@ApiModelProperty(value = "List of style, compilation and other errors")
 	private List<ErrorDTO> errors = new ArrayList<>();
 
 	@Builder.Default
+	@ApiModelProperty(value = "Whether the testing was successful or not. Will be true if tester crashed.")
+	private Boolean failed = false;
+
+	@Builder.Default
 	@ApiModelProperty(value = "List of student files")
 	private List<FileDTO> files = new ArrayList<>();
+
+	@ApiModelProperty(value = " Timestamp when testing was finished in milliseconds")
+	private Long finishedTimestamp;
+
+	@ApiModelProperty(value = "URL or ssh for student repository")
+	private String gitStudentRepo;
+
+	@ApiModelProperty(value = "URL or ssh for test repository")
+	private String gitTestRepo;
+
+	@ApiModelProperty(value = "CommitDTO hash from student git repository")
+	private String hash;
+
+	@ApiModelProperty(value = "HTML result for student")
+	private String output;
+
+	@Builder.Default
+	@ApiModelProperty(value = "Priority of job on a scale from 1 to 10 inclusive")
+	private Integer priority = 5;
+
+	@ApiModelProperty(value = " Time when submission was received in milliseconds")
+	private Long receivedTimestamp;
+
+	@ApiModelProperty(value = "values that are returned the same way they were given in")
+	private JsonNode returnExtra;
+
+	@ApiModelProperty(value = "Git path with namespace. iti0102-2019/ex for example")
+	private String root;
+
+	@ApiModelProperty(value = "Slug ran for student. for example pr01_something")
+	private String slug;
+
+	@Builder.Default
+	@ApiModelProperty(value = "Style percentage. Either from 0 to 100")
+	private Integer style = 100;
+
+	@Builder.Default
+	@ApiModelProperty(value = "Extra parameters used for testing")
+	private Set<String> systemExtra = new HashSet<>();
 
 	@Builder.Default
 	@ApiModelProperty(value = "List of test files")
@@ -45,11 +99,11 @@ public class AreteResponseDTO {
 	private List<TestContextDTO> testSuites = new ArrayList<>();
 
 	@Builder.Default
-	@ApiModelProperty(value = "Console outputs from docker")
-	private List<ConsoleOutputDTO> consoleOutputs = new ArrayList<>();
+	@ApiModelProperty(value = "DockerTestRunner image used for testing")
+	private String testingPlatform = "unknown";
 
-	@ApiModelProperty(value = "HTML result for student")
-	private String output;
+	@ApiModelProperty(value = " Testing timestamp in milliseconds")
+	private Long timestamp;
 
 	@Builder.Default
 	@ApiModelProperty(value = "Number of tests")
@@ -64,67 +118,11 @@ public class AreteResponseDTO {
 	private Integer totalPassedCount = 0;
 
 	@Builder.Default
-	@ApiModelProperty(value = "DockerTestRunner image used for testing")
-	private String testingPlatform = "unknown";
-
-	@ApiModelProperty(value = "Git path with namespace. iti0102-2019/ex for example")
-	private String root;
-
-	@ApiModelProperty(value = "URL or ssh for test repository")
-	private String gitTestRepo;
-
-	@ApiModelProperty(value = "URL or ssh for student repository")
-	private String gitStudentRepo;
-
-	@Builder.Default
-	@ApiModelProperty(value = "Style percentage. Either from 0 to 100")
-	private Integer style = 100;
-
-	@ApiModelProperty(value = "Slug ran for student. for example pr01_something")
-	private String slug;
-
-	@ApiModelProperty(value = "values that are returned the same way they were given in")
-	private JsonNode returnExtra;
-
-	@ApiModelProperty(value = "CommitDTO hash from student git repository")
-	private String hash;
+	private String type = "arete";
 
 	@ApiModelProperty(value = "Students uniid")
 	private String uniid;
 
-	@ApiModelProperty(value = " Students mail")
-	private String email;
-
-	@ApiModelProperty(value = " Testing timestamp in milliseconds")
-	private Long timestamp;
-
-	@ApiModelProperty(value = " Time when submission was received in milliseconds")
-	private Long receivedTimestamp;
-
-	@ApiModelProperty(value = " Timestamp when testing was finished in milliseconds")
-	private Long finishedTimestamp;
-
-	@ApiModelProperty(value = "Commit message by student when pushing to repository")
-	private String commitMessage;
-
 	@Builder.Default
-	@ApiModelProperty(value = "Priority of job on a scale from 1 to 10 inclusive")
-	private Integer priority = 5;
-
-	@Builder.Default
-	@ApiModelProperty(value = "You can add (stylecheck) or something. It is sent to smaller tester. Look the possibilities from the small tester repository for more details. Values will be joined by comma before sending to tester")
-	private Set<String> dockerExtra = new HashSet<>();
-
-	@Builder.Default
-	@ApiModelProperty(value = "Extra parameters for testing")
-	private Set<String> systemExtra = new HashSet<>();
-
-	@Builder.Default
-	@ApiModelProperty(value = "Default docker timeout is 120 seconds. Maximum allowed code execution time.")
-	private Integer dockerTimeout = 120;
-
-	@Builder.Default
-	@ApiModelProperty(value = "Whether the testing was successful or not. Will be true if tester crashed.")
-	private Boolean failed = false;
-
+	private String version = "2.0";
 }

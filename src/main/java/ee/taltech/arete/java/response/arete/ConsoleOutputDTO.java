@@ -16,5 +16,4 @@ public class ConsoleOutputDTO {
 
 	@ApiModelProperty(value = "Std message")
 	private String content;
-
 }

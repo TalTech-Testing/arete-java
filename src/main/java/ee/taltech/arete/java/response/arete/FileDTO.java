@@ -14,10 +14,9 @@ import lombok.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FileDTO {
 
-	@ApiModelProperty(value = "Path for the file")
-	private String path;
-
 	@ApiModelProperty(value = "FileDTO content")
 	private String contents;
 
+	@ApiModelProperty(value = "Path for the file")
+	private String path;
 }

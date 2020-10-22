@@ -8,22 +8,35 @@ import java.util.List;
 @Data
 @Builder
 @ToString
+@Deprecated(forRemoval = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class HodorUnitTest {
 
-    List<String> groupsDependedUpon;
-    String status;
-    Integer weight;
-    Boolean printExceptionMessage;
-    Boolean printStackTrace;
-    Long timeElapsed;
-    List<String> methodsDependedUpon;
-    String stackTrace;
-    String name;
-    List<ConsoleOutputDTO> stdout;
-    String exceptionClass;
-    String exceptionMessage;
-    List<ConsoleOutputDTO> stderr;
+	private List<String> groupsDependedUpon;
+
+	private String status;
+
+	private Integer weight;
+
+	private Boolean printExceptionMessage;
+
+	private Boolean printStackTrace;
+
+	private Long timeElapsed;
+
+	private List<String> methodsDependedUpon;
+
+	private String stackTrace;
+
+	private String name;
+
+	private List<ConsoleOutputDTO> stdout;
+
+	private String exceptionClass;
+
+	private String exceptionMessage;
+
+	private List<ConsoleOutputDTO> stderr;
 
 }

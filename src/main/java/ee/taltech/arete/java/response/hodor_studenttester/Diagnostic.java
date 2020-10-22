@@ -5,17 +5,27 @@ import lombok.*;
 @Data
 @Builder
 @ToString
+@Deprecated(forRemoval = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Diagnostic {
 
-	String kind;
-	Integer lineNo;
-	Integer columnNo;
-	String message;
-	String code;
-	String file;
-	String hint;
-	String affected;
-	Boolean sensitive;
+	private String affected;
+
+	private String code;
+
+	private Integer columnNo;
+
+	private String file;
+
+	private String hint;
+
+	private String kind;
+
+	private Integer lineNo;
+
+	private String message;
+
+	private Boolean sensitive;
 }
+

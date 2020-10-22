@@ -1,0 +1,1 @@
+Although hodor format is supported by Arete, it's being deprecated

@@ -17,17 +17,22 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UnitTestDTO {
 
+	@ApiModelProperty(value = "Exception class")
+	private String exceptionClass;
+
+	@ApiModelProperty(value = "Exception message")
+	private String exceptionMessage;
+
 	@Builder.Default
 	@ApiModelProperty(value = "Groups of unittests this unittest depends on. If any test fails in that group, this test is skipped")
 	private List<String> groupsDependedUpon = new ArrayList<>();
 
 	@Builder.Default
-	@ApiModelProperty(value = "Status of the unittest")
-	private TestStatus status = TestStatus.SKIPPED;
+	@ApiModelProperty(value = "Methods depended, otherwise skipped")
+	private List<String> methodsDependedUpon = new ArrayList<>();
 
-	@Builder.Default
-	@ApiModelProperty(value = "Test weight")
-	private Integer weight = 1;
+	@ApiModelProperty(value = "Test name")
+	private String name;
 
 	@Builder.Default
 	@ApiModelProperty(value = "Boolean whether to show exception message to student or not")
@@ -37,30 +42,25 @@ public class UnitTestDTO {
 	@ApiModelProperty(value = "Boolean whether to show stack trace to student or not")
 	private Boolean printStackTrace = false;
 
-	@ApiModelProperty(value = "Time spent on test")
-	private Long timeElapsed;
-
-	@Builder.Default
-	@ApiModelProperty(value = "Methods depended, otherwise skipped")
-	private List<String> methodsDependedUpon = new ArrayList<>();
-
 	@ApiModelProperty(value = "Stacktrace")
 	private String stackTrace;
 
-	@ApiModelProperty(value = "Test name")
-	private String name;
+	@Builder.Default
+	@ApiModelProperty(value = "Status of the unittest")
+	private TestStatus status = TestStatus.SKIPPED;
+
+	@Builder.Default
+	@ApiModelProperty(value = "List of stderrs")
+	private List<ConsoleOutputDTO> stderr = new ArrayList<>();
 
 	@Builder.Default
 	@ApiModelProperty(value = "List of stdouts")
 	private List<ConsoleOutputDTO> stdout = new ArrayList<>();
 
-	@ApiModelProperty(value = "Exception class")
-	private String exceptionClass;
-
-	@ApiModelProperty(value = "Exception message")
-	private String exceptionMessage;
+	@ApiModelProperty(value = "Time spent on test")
+	private Long timeElapsed;
 
 	@Builder.Default
-	@ApiModelProperty(value = "List of stderrs")
-	private List<ConsoleOutputDTO> stderr = new ArrayList<>();
+	@ApiModelProperty(value = "Test weight")
+	private Integer weight = 1;
 }

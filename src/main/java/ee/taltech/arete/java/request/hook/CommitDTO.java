@@ -16,13 +16,13 @@ import java.util.Set;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CommitDTO {
 
-	@NotNull
-	@ApiModelProperty(value = "AuthorDTO of the commit")
-	private AuthorDTO author;
-
 	@Builder.Default
 	@ApiModelProperty(value = "Added files")
 	private Set<String> added = new HashSet<>();
+
+	@NotNull
+	@ApiModelProperty(value = "AuthorDTO of the commit")
+	private AuthorDTO author;
 
 	@Builder.Default
 	@ApiModelProperty(value = "Modified files")
@@ -31,5 +31,4 @@ public class CommitDTO {
 	@Builder.Default
 	@ApiModelProperty(value = "Removed files")
 	private Set<String> removed = new HashSet<>();
-
 }

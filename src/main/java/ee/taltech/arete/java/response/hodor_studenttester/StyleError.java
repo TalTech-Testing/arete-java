@@ -5,12 +5,17 @@ import lombok.*;
 @Data
 @Builder
 @ToString
+@Deprecated(forRemoval = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class StyleError {
-	String fileName;
-	String severityLevel;
-	Integer lineNo;
-	Integer columnNo;
-	String message;
+	private String fileName;
+
+	private String severityLevel;
+
+	private Integer lineNo;
+
+	private Integer columnNo;
+
+	private String message;
 }
