@@ -1,5 +1,6 @@
 package ee.taltech.arete.java.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ee.taltech.arete.java.TestingEnvironment;
 import ee.taltech.arete.java.UvaConfiguration;
 import com.fasterxml.jackson.annotation.JsonClassDescription;
@@ -16,6 +17,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonClassDescription("Async request from Moodle")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AreteRequestDTO {
 
 	@ApiModelProperty(value = "Image used for testing. Currently available: [java, python, fsharp, prolog]")

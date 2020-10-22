@@ -1,5 +1,6 @@
 package ee.taltech.arete.java.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
@@ -9,6 +10,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SourceFileDTO {
 
 	@NotNull

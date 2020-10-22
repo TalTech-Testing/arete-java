@@ -1,6 +1,7 @@
 package ee.taltech.arete.java.response.arete;
 
 import com.fasterxml.jackson.annotation.JsonClassDescription;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
@@ -10,6 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonClassDescription("Occured style, compilation and other errors")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ErrorDTO {
 
 	@Builder.Default

@@ -1,6 +1,7 @@
 package ee.taltech.arete.java.response.arete;
 
 import com.fasterxml.jackson.annotation.JsonClassDescription;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonClassDescription("Test results from test file")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TestContextDTO {
 
 	@Builder.Default

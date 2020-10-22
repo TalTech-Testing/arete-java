@@ -1,5 +1,6 @@
 package ee.taltech.arete.java.response.arete;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ee.taltech.arete.java.TestStatus;
 import com.fasterxml.jackson.annotation.JsonClassDescription;
 import io.swagger.annotations.ApiModelProperty;
@@ -13,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonClassDescription("Unit test")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UnitTestDTO {
 
 	@ApiModelProperty(value = "Groups of unittests this unittest depends on. If any test fails in that group, this test is skipped")

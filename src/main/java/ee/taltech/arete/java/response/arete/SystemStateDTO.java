@@ -1,6 +1,7 @@
 package ee.taltech.arete.java.response.arete;
 
 import com.fasterxml.jackson.annotation.JsonClassDescription;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.management.OperatingSystemMXBean;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,7 @@ import java.lang.management.ManagementFactory;
 @Builder
 @AllArgsConstructor
 @JsonClassDescription("Current state of the machine")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SystemStateDTO {
 
 	@Builder.Default

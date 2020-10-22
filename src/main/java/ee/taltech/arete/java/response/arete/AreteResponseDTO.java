@@ -1,5 +1,6 @@
 package ee.taltech.arete.java.response.arete;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ee.taltech.arete.java.TestingEnvironment;
 import ee.taltech.arete.java.UvaConfiguration;
 import com.fasterxml.jackson.annotation.JsonClassDescription;
@@ -20,6 +21,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonClassDescription("Response sent to ReturnUrl")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AreteResponseDTO {
 
 	@Builder.Default
