@@ -18,8 +18,14 @@ import java.util.Set;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AreteRequestDTO {
 
-	@ApiModelProperty(value = "You can add (stylecheck) or something. It is sent to smaller tester. Look the possibilities from the small tester repository for more details.")
+	@ApiModelProperty(value = "Where tester knows to look for exercise. https://github.com/envomp/Arete-runbook/blob/master/docs/SUB_TESTER_FOR_DEVELOPER.md")
+	private String dockerContentRoot;
+
+	@ApiModelProperty(value = "Value is sent to docker runner. https://github.com/envomp/Arete-runbook/blob/master/docs/SUB_TESTER_FOR_DEVELOPER.md")
 	private String dockerExtra;
+
+	@ApiModelProperty(value = "Where tester knows to look for student. https://github.com/envomp/Arete-runbook/blob/master/docs/SUB_TESTER_FOR_DEVELOPER.md")
+	private String dockerTestRoot;
 
 	@Builder.Default
 	@ApiModelProperty(value = "Default docker timeout is 120 seconds")

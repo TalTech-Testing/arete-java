@@ -29,8 +29,14 @@ public class AreteResponseDTO {
 	@ApiModelProperty(value = "Console outputs from docker")
 	private List<ConsoleOutputDTO> consoleOutputs = new ArrayList<>();
 
+	@ApiModelProperty(value = "content root that was sent to tester")
+	private String dockerContentRoot;
+
 	@ApiModelProperty(value = "Extra parameters that were sent to tester")
 	private String dockerExtra;
+
+	@ApiModelProperty(value = "test root that was sent to tester")
+	private String dockerTestRoot;
 
 	@Builder.Default
 	@ApiModelProperty(value = "Default docker timeout is 120 seconds. Maximum allowed code execution time.")
