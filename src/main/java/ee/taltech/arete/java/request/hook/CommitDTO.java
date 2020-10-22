@@ -13,11 +13,11 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Commit {
+public class CommitDTO {
 
 	@NotNull
-	@ApiModelProperty(value = "Author of the commit")
-	private Author author;
+	@ApiModelProperty(value = "AuthorDTO of the commit")
+	private AuthorDTO author;
 
 	@ApiModelProperty(value = "Added files")
 	private Set<String> added;

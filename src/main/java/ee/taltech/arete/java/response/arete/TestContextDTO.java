@@ -13,11 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonClassDescription("Test results from test file")
-public class TestContext {
+public class TestContextDTO {
 
 	@Builder.Default
 	@ApiModelProperty(value = "List of unittests tested")
-	List<UnitTest> unitTests = new ArrayList<>();
+	List<UnitTestDTO> unitTests = new ArrayList<>();
 
 	@Builder.Default
 	@ApiModelProperty(value = "Test name")

@@ -5,19 +5,21 @@ import com.sun.istack.NotNull;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Author {
+public class AreteTestUpdateDTO {
 
 	@NotNull
-	@ApiModelProperty(value = "Name of the author")
-	private String name;
+	@ApiModelProperty(value = "Git hook project")
+	private ProjectDTO project;
 
-	@ApiModelProperty(value = "email of the author")
-	private String email;
-
+	@NotNull
+	@ApiModelProperty(value = "Git hook project")
+	private List<CommitDTO> commits;
 }

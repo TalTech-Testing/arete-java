@@ -9,7 +9,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SourceFile {
+public class SourceFileDTO {
 
 	@NotNull
 	@ApiModelProperty(value = "EX01IdCode/src/ee/taltech/iti0202/idcode/IDCodeTest.java for example")

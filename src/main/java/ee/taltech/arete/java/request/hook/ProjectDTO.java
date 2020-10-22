@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Project {
+public class ProjectDTO {
 
 	@NotNull
 	@ApiModelProperty(value = "URL or ssh for test repository.")

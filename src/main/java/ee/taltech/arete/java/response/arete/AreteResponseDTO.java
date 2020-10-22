@@ -20,7 +20,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonClassDescription("Response sent to ReturnUrl")
-public class AreteResponse {
+public class AreteResponseDTO {
 
 	@Builder.Default
 	String type = "arete";
@@ -30,23 +30,23 @@ public class AreteResponse {
 
 	@Builder.Default
 	@ApiModelProperty(value = "List of style, compilation and other errors")
-	List<Error> errors = new ArrayList<>();
+	List<ErrorDTO> errors = new ArrayList<>();
 
 	@Builder.Default
 	@ApiModelProperty(value = "List of student files")
-	List<File> files = new ArrayList<>();
+	List<FileDTO> files = new ArrayList<>();
 
 	@Builder.Default
 	@ApiModelProperty(value = "List of test files")
-	List<File> testFiles = new ArrayList<>();
+	List<FileDTO> testFiles = new ArrayList<>();
 
 	@Builder.Default
 	@ApiModelProperty(value = "List of test suites which each contains unit-tests. Each test file produces an test suite")
-	List<TestContext> testSuites = new ArrayList<>();
+	List<TestContextDTO> testSuites = new ArrayList<>();
 
 	@Builder.Default
 	@ApiModelProperty(value = "(Appended by arete) Console outputs from docker")
-	List<ConsoleOutput> consoleOutputs = new ArrayList<>();
+	List<ConsoleOutputDTO> consoleOutputs = new ArrayList<>();
 
 	@Builder.Default
 	@ApiModelProperty(value = "(Overridden by arete) HTML result for student")
@@ -93,7 +93,7 @@ public class AreteResponse {
 	JsonNode returnExtra = null;
 
 	@Builder.Default
-	@ApiModelProperty(value = "(Overridden by arete) Commit hash from student git repository")
+	@ApiModelProperty(value = "(Overridden by arete) CommitDTO hash from student git repository")
 	String hash = "";
 
 	@Builder.Default
@@ -117,7 +117,7 @@ public class AreteResponse {
 	Long finishedTimestamp = 0L;
 
 	@Builder.Default
-	@ApiModelProperty(value = "(Overridden by arete) Commit message by student when pushing to repository")
+	@ApiModelProperty(value = "(Overridden by arete) CommitDTO message by student when pushing to repository")
 	String commitMessage = "";
 
 	@Builder.Default

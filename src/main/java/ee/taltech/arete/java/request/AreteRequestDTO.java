@@ -16,7 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonClassDescription("Async request from Moodle")
-public class AreteRequest {
+public class AreteRequestDTO {
 
 	@ApiModelProperty(value = "Image used for testing. Currently available: [java, python, fsharp, prolog]")
 	private String testingPlatform;
@@ -28,13 +28,13 @@ public class AreteRequest {
 	private String gitStudentRepo;
 	// or. One of the options must be chosen
 	@ApiModelProperty(value = "List of student source files")
-	private List<SourceFile> source;
+	private List<SourceFileDTO> source;
 
 	@ApiModelProperty(value = "URL or ssh for test repository")
 	private String gitTestRepo;
 	//or
 	@ApiModelProperty(value = "List of test source files")
-	private List<SourceFile> testSource;
+	private List<SourceFileDTO> testSource;
 
 	@ApiModelProperty(value = "Slugs to be tested")
 	private Set<String> slugs;

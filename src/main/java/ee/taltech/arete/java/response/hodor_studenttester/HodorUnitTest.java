@@ -1,6 +1,6 @@
 package ee.taltech.arete.java.response.hodor_studenttester;
 
-import ee.taltech.arete.java.response.arete.ConsoleOutput;
+import ee.taltech.arete.java.response.arete.ConsoleOutputDTO;
 import lombok.*;
 
 import java.util.List;
@@ -21,9 +21,9 @@ public class HodorUnitTest {
     List<String> methodsDependedUpon;
     String stackTrace;
     String name;
-    List<ConsoleOutput> stdout;
+    List<ConsoleOutputDTO> stdout;
     String exceptionClass;
     String exceptionMessage;
-    List<ConsoleOutput> stderr;
+    List<ConsoleOutputDTO> stderr;
 
 }

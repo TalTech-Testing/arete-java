@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonClassDescription("Unit test")
-public class UnitTest {
+public class UnitTestDTO {
 
 	@ApiModelProperty(value = "Groups of unittests this unittest depends on. If any test fails in that group, this test is skipped")
 	List<String> groupsDependedUpon;
@@ -43,7 +43,7 @@ public class UnitTest {
 	String name;
 
 	@ApiModelProperty(value = "List of stdouts")
-	List<ConsoleOutput> stdout;
+	List<ConsoleOutputDTO> stdout;
 
 	@ApiModelProperty(value = "Exception class")
 	String exceptionClass;
@@ -52,5 +52,5 @@ public class UnitTest {
 	String exceptionMessage;
 
 	@ApiModelProperty(value = "List of stderrs")
-	List<ConsoleOutput> stderr;
+	List<ConsoleOutputDTO> stderr;
 }

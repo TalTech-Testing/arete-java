@@ -17,7 +17,7 @@ import java.lang.management.ManagementFactory;
 @Builder
 @AllArgsConstructor
 @JsonClassDescription("Current state of the machine")
-public class SystemState {
+public class SystemStateDTO {
 
 	@Builder.Default
 	@ApiModelProperty(value = "JVM CPU usage")
@@ -44,7 +44,7 @@ public class SystemState {
 	private Long systemDiskSpaceUsed = -1L;
 
 
-	public SystemState() {
+	public SystemStateDTO() {
 		OperatingSystemMXBean osBean = ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);
 		processCpuLoad = osBean.getProcessCpuLoad();
 		systemCpuLoad = osBean.getSystemCpuLoad();

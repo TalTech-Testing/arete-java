@@ -9,11 +9,15 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonClassDescription("Stderr or Stdout")
-public class ConsoleOutput {
+@JsonClassDescription("FileDTO class")
+public class FileDTO {
 
 	@Builder.Default
-	@ApiModelProperty(value = "Std message")
-	String content = "";
+	@ApiModelProperty(value = "Path for the file")
+	private String path = "";
+
+	@Builder.Default
+	@ApiModelProperty(value = "FileDTO content")
+	private String contents = "";
 
 }

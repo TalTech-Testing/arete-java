@@ -1,9 +1,9 @@
 package ee.taltech.arete.java;
 
-import ee.taltech.arete.java.request.AreteRequest;
-import ee.taltech.arete.java.request.hook.AreteTestUpdate;
-import ee.taltech.arete.java.response.arete.AreteResponse;
-import ee.taltech.arete.java.response.arete.SystemState;
+import ee.taltech.arete.java.request.AreteRequestDTO;
+import ee.taltech.arete.java.request.hook.AreteTestUpdateDTO;
+import ee.taltech.arete.java.response.arete.AreteResponseDTO;
+import ee.taltech.arete.java.response.arete.SystemStateDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.net.HttpHeaders;
 
@@ -29,10 +29,10 @@ public class AreteClient {
 	/**
 	 * @return Currently active submissions
 	 **/
-	public AreteRequest[] requestActiveSubmissions() {
+	public AreteRequestDTO[] requestActiveSubmissions() {
 		try {
 			HttpResponse<String> response = get(url + "/submissions/active");
-			return objectMapper.readValue(response.body(), AreteRequest[].class);
+			return objectMapper.readValue(response.body(), AreteRequestDTO[].class);
 		} catch (Exception e) {
 			throw new AreteException(e);
 		}
@@ -41,10 +41,10 @@ public class AreteClient {
 	/**
 	 * @return state of tester
 	 **/
-	public SystemState requestState() {
+	public SystemStateDTO requestState() {
 		try {
 			HttpResponse<String> response = get(url + "/state");
-			return objectMapper.readValue(response.body(), SystemState.class);
+			return objectMapper.readValue(response.body(), SystemStateDTO.class);
 		} catch (Exception e) {
 			throw new AreteException(e);
 		}
@@ -83,10 +83,10 @@ public class AreteClient {
 	 *                 <p>
 	 * @return a response with the actual test results
 	 **/
-	public AreteResponse requestSync(AreteRequest request) {
+	public AreteResponseDTO requestSync(AreteRequestDTO request) {
 		try {
 			HttpResponse<String> response = post(url + "/:testSync", objectMapper.writeValueAsString(request));
-			return objectMapper.readValue(response.body(), AreteResponse.class);
+			return objectMapper.readValue(response.body(), AreteResponseDTO.class);
 		} catch (Exception e) {
 			throw new AreteException(e);
 		}
@@ -97,10 +97,10 @@ public class AreteClient {
 	 *                 <p>
 	 * @return the received request and send the test results to returnUrl
 	 **/
-	public AreteRequest requestAsync(AreteRequest request) {
+	public AreteRequestDTO requestAsync(AreteRequestDTO request) {
 		try {
 			HttpResponse<String> response = post(url + "/:testAsync", objectMapper.writeValueAsString(request));
-			return objectMapper.readValue(response.body(), AreteRequest.class);
+			return objectMapper.readValue(response.body(), AreteRequestDTO.class);
 		} catch (Exception e) {
 			throw new AreteException(e);
 		}
@@ -109,7 +109,7 @@ public class AreteClient {
 	/**
 	 * @param request: request body to make tester update tests folder to run tests from.
 	 **/
-	public void updateTests(AreteTestUpdate request) {
+	public void updateTests(AreteTestUpdateDTO request) {
 		try {
 			HttpResponse<String> response = put(url + "/tests", objectMapper.writeValueAsString(request));
 		} catch (Exception e) {
@@ -119,7 +119,7 @@ public class AreteClient {
 
 	/**
 	 * @param image: image to update - java-tester, python-tester, prolog-tester currently supported
-	 *               AreteTestUpdate request: request body to update tester image. For example python-tester was updated in docker.io
+	 *               AreteTestUpdateDTO request: request body to update tester image. For example python-tester was updated in docker.io
 	 **/
 	public void updateImage(String image) {
 		try {

@@ -10,18 +10,18 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonClassDescription("Occured style, compilation and other errors")
-public class Error {
+public class ErrorDTO {
 
 	@Builder.Default
-	@ApiModelProperty(value = "Error message")
+	@ApiModelProperty(value = "ErrorDTO message")
 	String message = "";
 
 	@Builder.Default
-	@ApiModelProperty(value = "Error kind(styleError, compilationError, other)")
+	@ApiModelProperty(value = "ErrorDTO kind(styleError, compilationError, other)")
 	String kind = "";
 
 	@Builder.Default
-	@ApiModelProperty(value = "File, where error occured")
+	@ApiModelProperty(value = "FileDTO, where error occured")
 	String fileName = "";
 
 	@Builder.Default
