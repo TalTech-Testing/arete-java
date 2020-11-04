@@ -1,33 +1,35 @@
 package ee.taltech.arete.java.request.tester;
 
+import com.fasterxml.jackson.annotation.JsonClassDescription;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@ToString
 @Getter
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
+@JsonClassDescription("Input that TestRunner gets")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DockerParameters {
-	private final String uniid;
+	private String uniid;
 
 	@Builder.Default
-	private final Set<String> systemExtra = new HashSet<>();
+	private Set<String> systemExtra = new HashSet<>();
 
 	@Builder.Default
-	private final Integer timeout = 120;
+	private Integer timeout = 120;
 
-	private final String commitMessage;
-
-	@Builder.Default
-	private final String contentRoot = "/student";
-
-	private final String extra;
+	private String commitMessage;
 
 	@Builder.Default
-	private final String testRoot = "/tester";
+	private String contentRoot = "/student";
+
+	private String extra;
+
+	@Builder.Default
+	private String testRoot = "/tester";
 }

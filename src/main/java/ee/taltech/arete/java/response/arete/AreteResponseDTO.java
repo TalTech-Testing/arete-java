@@ -132,3 +132,4 @@ public class AreteResponseDTO {
 	@Builder.Default
 	private String version = "2.0";
 }
+
