@@ -27,7 +27,7 @@ public class AreteResponseDTO {
 
 	@Builder.Default
 	@ApiModelProperty(value = "Console outputs from docker")
-	private List<ConsoleOutputDTO> consoleOutputs = new ArrayList<>();
+	private String consoleOutputs;
 
 	@ApiModelProperty(value = "content root that was sent to tester")
 	private String dockerContentRoot;

@@ -51,11 +51,11 @@ public class UnitTestDTO {
 
 	@Builder.Default
 	@ApiModelProperty(value = "List of stderrs")
-	private List<ConsoleOutputDTO> stderr = new ArrayList<>();
+	private String stderr;
 
 	@Builder.Default
 	@ApiModelProperty(value = "List of stdouts")
-	private List<ConsoleOutputDTO> stdout = new ArrayList<>();
+	private String stdout;
 
 	@ApiModelProperty(value = "Time spent on test")
 	private Long timeElapsed;

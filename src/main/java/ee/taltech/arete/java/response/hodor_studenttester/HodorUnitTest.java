@@ -1,6 +1,5 @@
 package ee.taltech.arete.java.response.hodor_studenttester;
 
-import ee.taltech.arete.java.response.arete.ConsoleOutputDTO;
 import lombok.*;
 
 import java.util.List;
