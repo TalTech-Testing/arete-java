@@ -25,7 +25,6 @@ public class AreteResponseDTO {
 	@ApiModelProperty(value = "Commit message by student when pushing to repository")
 	private String commitMessage;
 
-	@Builder.Default
 	@ApiModelProperty(value = "Console outputs from docker")
 	private String consoleOutputs;
 

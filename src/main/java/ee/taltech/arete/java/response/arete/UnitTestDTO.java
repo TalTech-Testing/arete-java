@@ -49,11 +49,9 @@ public class UnitTestDTO {
 	@ApiModelProperty(value = "Status of the unittest")
 	private TestStatus status = TestStatus.SKIPPED;
 
-	@Builder.Default
 	@ApiModelProperty(value = "List of stderrs")
 	private String stderr;
 
-	@Builder.Default
 	@ApiModelProperty(value = "List of stdouts")
 	private String stdout;
 
