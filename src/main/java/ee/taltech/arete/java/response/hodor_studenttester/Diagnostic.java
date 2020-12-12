@@ -8,6 +8,7 @@ import lombok.*;
 @Deprecated(forRemoval = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Diagnostic {
 
 	private String affected;

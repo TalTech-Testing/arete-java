@@ -10,6 +10,7 @@ import java.util.ArrayList;
 @Deprecated(forRemoval = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TestingResult {
 
 	Integer code;

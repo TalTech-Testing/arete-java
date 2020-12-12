@@ -9,6 +9,7 @@ import lombok.*;
 @Deprecated(forRemoval = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TesterStderr {
 
 	String thread;

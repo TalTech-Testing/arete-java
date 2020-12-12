@@ -10,13 +10,14 @@ import java.util.List;
 @Deprecated(forRemoval = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class HodorUnitTest {
-
-	private List<String> groupsDependedUpon;
 
 	private String status;
 
 	private Integer weight;
+
+	private String description;
 
 	private Boolean printExceptionMessage;
 
@@ -24,17 +25,19 @@ public class HodorUnitTest {
 
 	private Long timeElapsed;
 
-	private List<String> methodsDependedUpon;
+	private List<String> groupsDependedUpon;
 
-	private String stackTrace;
+	private List<String> methodsDependedUpon;
 
 	private String name;
 
-	private List<ConsoleOutputDTO> stdout;
+	private String stackTrace;
 
 	private String exceptionClass;
 
 	private String exceptionMessage;
+
+	private List<ConsoleOutputDTO> stdout;
 
 	private List<ConsoleOutputDTO> stderr;
 

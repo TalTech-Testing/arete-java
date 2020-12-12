@@ -10,6 +10,7 @@ import java.util.List;
 @Deprecated(forRemoval = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class HodorTestContext {
 
 	private Integer count;
