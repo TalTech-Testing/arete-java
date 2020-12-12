@@ -1,6 +1,7 @@
 package ee.taltech.arete.java.response.hodor_studenttester;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 @Data
