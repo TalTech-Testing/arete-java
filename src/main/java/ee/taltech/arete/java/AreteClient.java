@@ -19,13 +19,23 @@ public class AreteClient {
 
 	String url;
 
+	String token;
+
 	/**
 	 * @param testerUrl: testers ip with port or url. localhost:8098 if in tester machine.
 	 **/
 	public AreteClient(String testerUrl) {
 		this.url = testerUrl;
+		this.token = null;
 	}
 
+	/**
+	 * @param testerUrl: testers ip with port or url. localhost:8098 if in tester machine.
+	 **/
+	public AreteClient(String testerUrl, String token) {
+		this.url = testerUrl;
+		this.token = token;
+	}
 
 	/**
 	 * @return Currently active submissions
@@ -46,6 +56,7 @@ public class AreteClient {
 				.uri(URI.create(postUrl))
 				.GET()
 				.setHeader(HttpHeaders.CONTENT_TYPE, "application/json")
+				.setHeader(HttpHeaders.AUTHORIZATION, token)
 				.build();
 
 		return client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -77,21 +88,6 @@ public class AreteClient {
 	}
 
 	/**
-	 * @param request: new debug mode
-	 *                 <p>
-	 * @return a boolean whether operation succeeded or not
-	 **/
-	public Boolean requestDebug(Boolean request) {
-		try {
-			HttpResponse<String> response = get(url + "/debug/" + request);
-			assert response.statusCode() == 202;
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-	}
-
-	/**
 	 * @param request: request body
 	 *                 <p>
 	 * @return a response with the actual test results
@@ -112,6 +108,7 @@ public class AreteClient {
 				.uri(URI.create(postUrl))
 				.POST(HttpRequest.BodyPublishers.ofString(data))
 				.setHeader(HttpHeaders.CONTENT_TYPE, "application/json")
+				.setHeader(HttpHeaders.AUTHORIZATION, token)
 				.build();
 
 		return client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -150,6 +147,7 @@ public class AreteClient {
 				.uri(URI.create(postUrl))
 				.PUT(HttpRequest.BodyPublishers.ofString(data))
 				.setHeader(HttpHeaders.CONTENT_TYPE, "application/json")
+				.setHeader(HttpHeaders.AUTHORIZATION, token)
 				.build();
 
 		return client.send(request, HttpResponse.BodyHandlers.ofString());
