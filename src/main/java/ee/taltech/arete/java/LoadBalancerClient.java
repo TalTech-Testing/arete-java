@@ -19,7 +19,7 @@ public class LoadBalancerClient {
 	private final String url;
 
 	/**
-	 * @param testerUrl: authentication service url: https://cs.ttu.ee/services/arete/api/v2/ - most likely
+	 * @param testerUrl: load balancer service url: http://127.0.0.1:8098 - most likely
 	 **/
 	public LoadBalancerClient(String testerUrl) {
 		this.url = testerUrl;
