@@ -13,31 +13,16 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class AreteClient {
+public class LoadBalancerClient {
 
 	private final ObjectMapper objectMapper = new ObjectMapper();
 	private final String url;
-	private final String token;
 
 	/**
 	 * @param testerUrl: authentication service url: https://cs.ttu.ee/services/arete/api/v2/ - most likely
-	 * @param token:     token to authenticate against authentication service
 	 **/
-	public AreteClient(String testerUrl, String token) {
+	public LoadBalancerClient(String testerUrl) {
 		this.url = testerUrl;
-		this.token = token;
-	}
-
-	/**
-	 * @return Currently active submissions
-	 **/
-	public AreteRequestDTO[] requestActiveSubmissions() {
-		try {
-			HttpResponse<String> response = get(url + "/submission/active");
-			return objectMapper.readValue(response.body(), AreteRequestDTO[].class);
-		} catch (Exception e) {
-			throw new AreteException(e);
-		}
 	}
 
 	/**
@@ -58,7 +43,7 @@ public class AreteClient {
 	 **/
 	public AreteResponseDTO requestSync(AreteRequestDTO request) {
 		try {
-			HttpResponse<String> response = post(url + "/submission/:testSync", objectMapper.writeValueAsString(request));
+			HttpResponse<String> response = post(url + "/:testSync", objectMapper.writeValueAsString(request));
 			return objectMapper.readValue(response.body(), AreteResponseDTO.class);
 		} catch (Exception e) {
 			throw new AreteException(e);
@@ -71,7 +56,7 @@ public class AreteClient {
 	 **/
 	public AreteRequestDTO requestAsync(AreteRequestDTO request) {
 		try {
-			HttpResponse<String> response = post(url + "/submission/:testAsync", objectMapper.writeValueAsString(request));
+			HttpResponse<String> response = post(url + "/:testAsync", objectMapper.writeValueAsString(request));
 			return objectMapper.readValue(response.body(), AreteRequestDTO.class);
 		} catch (Exception e) {
 			throw new AreteException(e);
@@ -83,7 +68,7 @@ public class AreteClient {
 	 **/
 	public void updateTests(AreteTestUpdateDTO request) {
 		try {
-			HttpResponse<String> response = put(url + "/exercise", objectMapper.writeValueAsString(request));
+			HttpResponse<String> response = put(url + "/tests", objectMapper.writeValueAsString(request));
 		} catch (Exception e) {
 			throw new AreteException(e);
 		}
@@ -94,7 +79,7 @@ public class AreteClient {
 	 **/
 	public void updateImage(String image) {
 		try {
-			HttpResponse<String> response = put(url + "/course/" + image, "");
+			HttpResponse<String> response = put(url + "/image/" + image, "");
 		} catch (Exception e) {
 			throw new AreteException(e);
 		}
@@ -108,7 +93,6 @@ public class AreteClient {
 				.uri(URI.create(postUrl))
 				.GET()
 				.setHeader(HttpHeaders.CONTENT_TYPE, "application/json")
-				.setHeader(HttpHeaders.AUTHORIZATION, token)
 				.build();
 
 		return client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -123,7 +107,6 @@ public class AreteClient {
 				.uri(URI.create(postUrl))
 				.POST(HttpRequest.BodyPublishers.ofString(data))
 				.setHeader(HttpHeaders.CONTENT_TYPE, "application/json")
-				.setHeader(HttpHeaders.AUTHORIZATION, token)
 				.build();
 
 		return client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -138,17 +121,10 @@ public class AreteClient {
 				.uri(URI.create(postUrl))
 				.PUT(HttpRequest.BodyPublishers.ofString(data))
 				.setHeader(HttpHeaders.CONTENT_TYPE, "application/json")
-				.setHeader(HttpHeaders.AUTHORIZATION, token)
 				.build();
 
 		return client.send(request, HttpResponse.BodyHandlers.ofString());
 
 	}
 
-}
-
-class AreteException extends RuntimeException {
-	public AreteException(Exception e) {
-		super(e);
-	}
 }
