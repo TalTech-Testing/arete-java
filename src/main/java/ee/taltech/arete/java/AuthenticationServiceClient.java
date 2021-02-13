@@ -20,7 +20,7 @@ public class AuthenticationServiceClient {
 	private final String token;
 
 	/**
-	 * @param testerUrl: authentication service url: https://cs.ttu.ee/services/arete/api/v2/ - most likely
+	 * @param testerUrl: authentication service url: https://cs.ttu.ee/services/arete/api/v2 - most likely
 	 * @param token:     token to authenticate against authentication service
 	 **/
 	public AuthenticationServiceClient(String testerUrl, String token) {
